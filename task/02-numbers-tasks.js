@@ -52,7 +52,9 @@ export function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 export function getAverage(value1, value2) {
-  return (value1 + value2) >> 1;
+  /* implement your code here */
+  throw new Error('Not implemented');
+  // return (value1 + value2) >> 1;
 }
 
 /**
@@ -167,7 +169,7 @@ export function getParallelipidedDiagonal(a, b, c) {
 
 /**
  * Returns the number rounded to specified power of 10.
- *
+ *  
  * @param {number} num
  * @param {number} pow
  * @return {number}

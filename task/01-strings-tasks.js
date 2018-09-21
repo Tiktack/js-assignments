@@ -221,11 +221,13 @@ export function getRectangleString(width, height) {
  *
  */
 export function encodeToRot13(str) {
-  var strNew;
-  for (var i = 0; i < str.length; i++) {
-    strNew += String.fromCharCode((str[i].charCodeAt() + 13) % 26);
-  }
-  return strNew;
+  /* implement your code here */
+  throw new Error('Not implemented');
+  // var strNew;
+  // for (var i = 0; i < str.length; i++) {
+  //   strNew += String.fromCharCode((str[i].charCodeAt() + 13) % 26);
+  // }
+  // return strNew;
 }
 
 /**
