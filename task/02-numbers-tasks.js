@@ -1,4 +1,3 @@
-
 /** ******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
@@ -21,8 +20,7 @@
  *   5, 5  => 25
  */
 export function getRectangleArea(width, height) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return width * height;
 }
 
 
@@ -38,8 +36,7 @@ export function getRectangleArea(width, height) {
  *   0    => 0
  */
 export function getCicleCircumference(radius) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return 2 * Math.PI * radius;
 }
 
 /**
@@ -55,8 +52,7 @@ export function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 export function getAverage(value1, value2) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return (value1 + value2) >> 1;
 }
 
 /**
@@ -92,8 +88,7 @@ export function getDistanceBetweenPoints(x1, y1, x2, y2) {
  *   5*x = 0         => 0
  */
 export function getLinearEquationRoot(a, b) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return b * (-1) / a;
 }
 
 
@@ -133,8 +128,8 @@ export function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 export function getLastDigit(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var temp = value.toString();
+  return parseInt(temp[temp.length - 1]);
 }
 
 
@@ -150,8 +145,7 @@ export function getLastDigit(value) {
  * '-525.5'     => -525.5
  */
 export function parseNumberFromString(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return parseFloat(value);
 }
 
 /**
@@ -168,8 +162,7 @@ export function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 export function getParallelipidedDiagonal(a, b, c) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2));
 }
 
 /**
