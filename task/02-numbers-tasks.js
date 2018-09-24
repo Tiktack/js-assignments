@@ -52,9 +52,9 @@ export function getCicleCircumference(radius) {
  *  -3, 3  => 0
  */
 export function getAverage(value1, value2) {
-  /* implement your code here */
-  throw new Error('Not implemented');
-  // return (value1 + value2) >> 1;
+  // /* implement your code here */
+  // throw new Error('Not implemented');
+  return value1 / 2 + value2 / 2;
 }
 
 /**
@@ -73,8 +73,7 @@ export function getAverage(value1, value2) {
  *   (-5,0) (10,-10) => 18.027756377319946
  */
 export function getDistanceBetweenPoints(x1, y1, x2, y2) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 }
 
 /**
@@ -185,8 +184,7 @@ export function getParallelipidedDiagonal(a, b, c) {
  *   1678, 3  => 2000
  */
 export function roundToPowerOfTen(num, pow) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return Math.round(num / Math.pow(10, pow)) * Math.pow(10, pow);
 }
 
 /**
@@ -207,8 +205,21 @@ export function roundToPowerOfTen(num, pow) {
  *   17 => true
  */
 export function isPrime(n) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  if (n <= 1) {
+    return false;
+  } else if (n <= 3) {
+    return true;
+  } else if (n % 2 === 0 || n % 3 === 0) {
+    return false;
+  }
+  var i = 5;
+  while (i * i <= n) {
+    if (n % i === 0 || n % (i + 2) === 0) {
+      return false;
+    }
+    i = i + 6;
+  }
+  return true;
 }
 
 /**
@@ -227,6 +238,5 @@ export function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 export function toNumber(value, def) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return !isNaN(parseInt(value)) ? parseInt(value) : def;
 }
