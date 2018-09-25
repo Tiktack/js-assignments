@@ -1,4 +1,3 @@
-
 /** ******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
@@ -21,8 +20,7 @@
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
 export function parseDataFromRfc2822(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return Date.parse(value);
 }
 
 /**
@@ -37,8 +35,7 @@ export function parseDataFromRfc2822(value) {
  *    '2016-01-19T08:07:37Z' => Date()
  */
 export function parseDataFromIso8601(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return Date.parse(value);
 }
 
 
@@ -57,8 +54,8 @@ export function parseDataFromIso8601(value) {
  *    Date(2015,1,1)    => false
  */
 export function isLeapYear(date) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var year = date.getFullYear();
+  return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
 }
 
 
@@ -78,8 +75,10 @@ export function isLeapYear(date) {
  *    Date(2000,1,1,10,0,0),  Date(2000,1,1,15,20,10,453)   => "05:20:10.453"
  */
 export function timeSpanToString(startDate, endDate) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return String('00' + (endDate.getHours() - startDate.getHours())).slice(-2) + ':' +
+    String('00' + (endDate.getMinutes() - startDate.getMinutes())).slice(-2) + ':' +
+    String('00' + (endDate.getSeconds() - startDate.getSeconds())).slice(-2) + '.' +
+    String('000' + (endDate.getMilliseconds() - startDate.getMilliseconds())).slice(-3);
 }
 
 
@@ -98,6 +97,6 @@ export function timeSpanToString(startDate, endDate) {
  *    Date.UTC(2016,3,5,21, 0) => Math.PI/2
  */
 export function angleBetweenClockHands(date) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var c = Math.abs(0.5 * (60 * date.getUTCHours() % 12 - 11 * date.getMinutes()));
+  return (c > 180 ? 360 - c : c) * (Math.PI / 180);
 }
