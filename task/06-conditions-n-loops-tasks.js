@@ -1,4 +1,3 @@
-
 /** ************************************************************************************************
  *                                                                                                *
  * Plese read the following tutorial before implementing tasks:                                   *
@@ -29,8 +28,7 @@
  *
  */
 export function getFizzBuzz(num) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return (!(num % 3) && !(num % 5)) ? 'FizzBuzz' : num % 3 ? num % 5 ? num : 'Buzz' : 'Fizz';
 }
 
 
@@ -46,8 +44,7 @@ export function getFizzBuzz(num) {
  *   10 => 3628800
  */
 export function getFactorial(n) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return Array(n).fill().reduce((result, x, index) => result *= index + 1, 1);
 }
 
 
@@ -64,13 +61,12 @@ export function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 export function getSumBetweenNumbers(n1, n2) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return Array(n2 - n1 + 1).fill().reduce((result, x, index) => result += index + n1, 0);
 }
 
 
 /**
- * Returns true, if a triangle can be built with the specified sides a,b,c and false 
+ * Returns true, if a triangle can be built with the specified sides a,b,c and false
  * in any other ways.
  *
  * @param {number} a
@@ -85,8 +81,8 @@ export function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 export function isTriangle(a, b, c) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  let mas = [a, b, c].sort();
+  return mas[2] < mas[0] + mas[1];
 }
 
 
@@ -155,8 +151,7 @@ export function doRectanglesOverlap(rect1, rect2) {
  *
  */
 export function isInsideCircle(circle, point) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return circle.radius > Math.sqrt(Math.pow(point.x - circle.center.x, 2) + Math.pow(point.y - circle.center.y, 2));
 }
 
 
@@ -172,13 +167,12 @@ export function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 export function findFirstSingleChar(str) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return [...str].find((x, index) => [...str.slice(0, index), ...str.slice(index + 1)].indexOf(x) === -1);
 }
 
 
 /**
- * Returns the string representation of math interval, specified by two points and 
+ * Returns the string representation of math interval, specified by two points and
  * include / exclude flags.
  * See the details: https://en.wikipedia.org/wiki/Interval_(mathematics)
  *
@@ -200,8 +194,10 @@ export function findFirstSingleChar(str) {
  *
  */
 export function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return (isStartIncluded ? '[' : '(')
+    .concat([a, b].sort())
+    .concat(isEndIncluded ? ']' : ')')
+    .replace(',', ', ');
 }
 
 
@@ -218,8 +214,7 @@ export function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
  * 'noon' => 'noon'
  */
 export function reverseString(str) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return [...str].reverse().join('');
 }
 
 
@@ -236,8 +231,7 @@ export function reverseString(str) {
  *   34143 => 34143
  */
 export function reverseInteger(num) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return [...num.toString()].reverse().join('');
 }
 
 
@@ -282,8 +276,8 @@ export function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 export function getDigitalRoot(num) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  let sum = [...num.toString()].reduce((result, x) => result += parseInt(x), 0);
+  return sum > 9 ? getDigitalRoot(sum) : sum;
 }
 
 
@@ -372,8 +366,7 @@ export function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 export function toNaryString(num, n) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return num.toString(n);
 }
 
 
@@ -390,8 +383,14 @@ export function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 export function getCommonDirectoryPath(pathes) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  let temp = pathes.map(x => x.split('/').filter(y => !(y.includes('.'))));
+  var result = '';
+  for (var i = 0; i < temp[0].length; i++) {
+    if (temp.every(x => x[i] === temp[0][i])) {
+      result += temp[0][i] + '/';
+    } else break;
+  }
+  return result;
 }
 
 
@@ -450,6 +449,37 @@ export function getMatrixProduct(m1, m2) {
  *
  */
 export function evaluateTicTacToePosition(position) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  for (var i = 0; i < 3; i++) {
+    for (var j = 0; j < 3; j++) {
+      if (position[i][j] !== 'X' && position[i][j] !== '0') {
+        position[i][j] = ' ';
+      }
+    }
+  }
+  return rows(position) || colomns(position) || diagonals(position);
+}
+
+function rows(pos) {
+  for (var i = 0; i < 3; i++) {
+    if (pos[i].every(x => x === pos[i][0] && x !== ' ')) {
+      return pos[i][0];
+    }
+  }
+  return undefined;
+}
+
+function diagonals(pos) {
+  if ((pos[0][0] === pos[1][1] && pos[2][2] === pos[1][1] || pos[0][2] === pos[1][1] && pos[2][0] === pos[1][1]) && pos[1][1] !== ' ') {
+    return pos[1][1];
+  }
+  return undefined;
+}
+
+function colomns(pos) {
+  for (var i = 0; i < 3; i++) {
+    if (pos[1][i] === pos[0][i] && pos[2][i] === pos[0][i] && pos[0][i] !== ' ') {
+      return pos[0][i];
+    }
+  }
+  return undefined;
 }
