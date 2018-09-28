@@ -65,7 +65,6 @@ export function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 export function extractNameFromTemplate(value) {
-  /* implement your code here */
   throw new Error('Not implemented');
 }
 
@@ -142,7 +141,7 @@ export function removeFirstOccurrences(str, value) {
  *   '<a>' => 'a'
  */
 export function unbracketTag(str) {
-  return str.replace('<', '').replace('>', '');
+  return str.slice(1, -1);
 }
 
 
@@ -201,6 +200,32 @@ export function extractEmails(str) {
 export function getRectangleString(width, height) {
   /* implement your code here */
   throw new Error('Not implemented');
+  // var str;
+  // for (var i = 0; i < height; i++) {
+  //   for (var j = 0; j < width; j++) {
+  //     if (i === 0 && j === 0) {
+  //       str += '┌';
+  //       continue;
+  //     }
+  //     if (i === 0 && j === width - 1) {
+  //       str += '┐\n';
+  //       continue;
+  //     }
+  //     if (i === height - 1 && j === 0) {
+  //       str += '└';
+  //       continue;
+  //     }
+  //     if (i === height - 1 && j === width - 1) {
+  //       str += '┘\n';
+  //       continue;
+  //     } else {
+  //       str += '─';
+  //       continue;
+  //     }
+  //   }
+  //   str += '│';
+  // }
+  // return str;
 }
 
 
@@ -273,6 +298,9 @@ export function isString(value) {
  *   'K♠' => 51
  */
 export function getCardId(value) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return ['A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
+    'A♦', '2♦', '3♦', '4♦', '5♦', '6♦', '7♦', '8♦', '9♦', '10♦', 'J♦', 'Q♦', 'K♦',
+    'A♥', '2♥', '3♥', '4♥', '5♥', '6♥', '7♥', '8♥', '9♥', '10♥', 'J♥', 'Q♥', 'K♥',
+    'A♠', '2♠', '3♠', '4♠', '5♠', '6♠', '7♠', '8♠', '9♠', '10♠', 'J♠', 'Q♠', 'K♠'
+  ].indexOf(value);
 }
