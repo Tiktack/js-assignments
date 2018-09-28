@@ -40,7 +40,7 @@ export function findElement(arr, value) {
  *    5 => [ 1, 3, 5, 7, 9 ]
  */
 export function generateOdds(len) {
-  return Array.from(Array(len)).map((x, index) => index * 2 + 1);
+  return Array(len).fill().map((x, index) => index * 2 + 1);
 }
 
 
@@ -422,8 +422,11 @@ export function toStringList(arr) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  */
 export function sortCitiesArray(arr) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return arr.sort((a, b) => comparer(a.country, b.country) || comparer(a.city, b.city));
+}
+
+function comparer(a, b) {
+  return a > b ? 1 : a < b ? -1 : 0;
 }
 
 /**
@@ -445,7 +448,7 @@ export function sortCitiesArray(arr) {
  *           [0,0,0,0,1]]
  */
 export function getIdentityMatrix(n) {
-  throw new Error('Not implemented');
+  return Array(n).fill().map((x, i) => Array(n).fill().map((y, index) => index === i ? 1 : 0));
 }
 
 /**
@@ -511,8 +514,8 @@ export function distinct(arr) {
  *   }
  */
 export function group(array, keySelector, valueSelector) {
-  /* implement your code here */
   throw new Error('Not implemented');
+  // return array.reduce((result, x, index) => result.set(keySelector(x)).set(valueSelector(x)), new Map());
 }
 
 
@@ -530,8 +533,7 @@ export function group(array, keySelector, valueSelector) {
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
 export function selectMany(arr, childrenSelector) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return arr.reduce((total, x) => total.concat(childrenSelector(x)), []);
 }
 
 
@@ -574,6 +576,7 @@ export function getElementByIndexes(arr, indexes) {
 export function swapHeadAndTail(arr) {
   /* implement your code here */
   throw new Error('Not implemented');
+  //return Array(arr.length).fill().map((x, i) => i < arr.length / 2 ? arr[Math.trunc(arr.length / 2) + i] : arr[i - Math.trunc(arr.length / 2)]);
 }
 
 const tasks = {
