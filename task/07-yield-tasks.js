@@ -1,4 +1,3 @@
-
 /** ******************************************************************************************
  *                                                                                          *
  * Plese read the following tutorial before implementing tasks:                             *
@@ -32,7 +31,22 @@
  *
  */
 export function* get99BottlesOfBeer() {
-  throw new Error('Not implemented');
+  //throw new Error('Not implemented');
+  var beer = 99;
+  for (; beer > 0;) {
+    yield `${beer} bottles of beer on the wall, ${beer} bottles of beer.`;
+    beer--;
+    if (beer !== 1) {
+      yield `Take one down and pass it around, ${beer} bottles of beer on the wall.`;
+    } else {
+      yield `Take one down and pass it around, ${beer} bottle of beer on the wall.`;
+      yield `1 bottle of beer on the wall, 1 bottle of beer.`;
+      yield `Take one down and pass it around, no more bottles of beer on the wall.`;
+      yield `No more bottles of beer on the wall, no more bottles of beer.`;
+      yield `Go to the store and buy some more, 99 bottles of beer on the wall.`;
+      beer--;
+    }
+  }
 }
 
 
@@ -46,7 +60,15 @@ export function* get99BottlesOfBeer() {
  *
  */
 export function* getFibonacciSequence() {
-  throw new Error('Not implemented');
+  let a = 0;
+  let b = 1;
+  yield a;
+  yield b;
+  for (;;) {
+    let temp = b;
+    yield b = a + b;
+    a = temp;
+  }
 }
 
 
@@ -81,9 +103,15 @@ export function* getFibonacciSequence() {
  *
  */
 export function* depthTraversalTree(root) {
-  throw new Error('Not implemented');
+  var array = [root];
+  while (array.length) {
+    var firstNode = array.pop();
+    if (firstNode.hasOwnProperty('children')) {
+      array = array.concat(firstNode.children.reverse());
+    }
+    yield firstNode;
+  }
 }
-
 
 /**
  * Traverses a tree using the breadth-first strategy
@@ -107,7 +135,14 @@ export function* depthTraversalTree(root) {
  *
  */
 export function* breadthTraversalTree(root) {
-  throw new Error('Not implemented');
+  var array = [root];
+  while (array.length) {
+    var firstNode = array.pop();
+    if (firstNode.hasOwnProperty('children')) {
+      array = firstNode.children.reverse().concat(array);
+    }
+    yield firstNode;
+  }
 }
 
 
@@ -125,5 +160,18 @@ export function* breadthTraversalTree(root) {
  *   [ 1, 3, 5, ... ], [ -1 ] => [ -1, 1, 3, 5, ...]
  */
 export function* mergeSortedSequences(source1, source2) {
-  throw new Error('Not implemented');
+  var a = source1();
+  var b = source2();
+
+  var valueA = a.next().value;
+  var valueB = b.next().value;
+  while (true) {
+    if (valueA < valueB || valueB === undefined) {
+      yield valueA;
+      valueA = a.next().value;
+    } else {
+      yield valueB;
+      valueB = b.next().value;
+    }
+  }
 }
