@@ -1,4 +1,3 @@
-
 /** ************************************************************************************************
  *                                                                                                *
  * Plese read the following tutorial before implementing tasks:                                   *
@@ -22,10 +21,14 @@
  *    console.log(r.getArea());   // => 200
  */
 export function Rectangle(width, height) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  this.width = width;
+  this.height = height;
 }
-
+Rectangle.prototype = {
+  getArea: function () {
+    return this.width * this.height;
+  }
+};
 
 /**
  * Returns the JSON representation of specified object
@@ -38,8 +41,7 @@ export function Rectangle(width, height) {
  *    { width: 10, height : 20 } => '{"height":10,"width":20}'
  */
 export function getJSON(obj) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return JSON.stringify(obj);
 }
 
 
@@ -55,8 +57,7 @@ export function getJSON(obj) {
  *
  */
 export function fromJSON(proto, json) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return Object.assign(Object.create(proto), JSON.parse(json));
 }
 
 
