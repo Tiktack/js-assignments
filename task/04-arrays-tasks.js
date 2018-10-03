@@ -272,8 +272,7 @@ export function getSecondItems(arr) {
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
 export function propagateItemsByPositionIndex(arr) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return arr.reduce((result, x, index) => result.concat([...Array(index + 1).fill(x)]), []);
 }
 
 
@@ -326,8 +325,8 @@ export function getPositivesCount(arr) {
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
 export function sortDigitNamesByNumericOrder(arr) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var voc = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  return arr.sort((x, y) => voc.indexOf(x) - voc.indexOf(y));
 }
 
 /**
@@ -550,8 +549,7 @@ export function selectMany(arr, childrenSelector) {
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
 export function getElementByIndexes(arr, indexes) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  return indexes.reduce((result, x) => result = result[x], arr);
 }
 
 
@@ -574,9 +572,8 @@ export function getElementByIndexes(arr, indexes) {
  *
  */
 export function swapHeadAndTail(arr) {
-  /* implement your code here */
-  throw new Error('Not implemented');
-  //return Array(arr.length).fill().map((x, i) => i < arr.length / 2 ? arr[Math.trunc(arr.length / 2) + i] : arr[i - Math.trunc(arr.length / 2)]);
+  var mid = arr.length / 2;
+  return [...arr.slice(-mid), ...arr.slice(mid, -mid), ...arr.slice(0, mid)];
 }
 
 const tasks = {

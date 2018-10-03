@@ -65,7 +65,7 @@ export function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 export function extractNameFromTemplate(value) {
-  throw new Error('Not implemented');
+  return value.slice(7, value.length - 1);
 }
 
 
@@ -198,34 +198,17 @@ export function extractEmails(str) {
  *
  */
 export function getRectangleString(width, height) {
-  /* implement your code here */
-  throw new Error('Not implemented');
-  // var str;
-  // for (var i = 0; i < height; i++) {
-  //   for (var j = 0; j < width; j++) {
-  //     if (i === 0 && j === 0) {
-  //       str += '┌';
-  //       continue;
-  //     }
-  //     if (i === 0 && j === width - 1) {
-  //       str += '┐\n';
-  //       continue;
-  //     }
-  //     if (i === height - 1 && j === 0) {
-  //       str += '└';
-  //       continue;
-  //     }
-  //     if (i === height - 1 && j === width - 1) {
-  //       str += '┘\n';
-  //       continue;
-  //     } else {
-  //       str += '─';
-  //       continue;
-  //     }
-  //   }
-  //   str += '│';
-  // }
-  // return str;
+  var str = '';
+  for (let index = 0; index < height; index++) {
+    if (index === 0) {
+      str += '┌' + '─'.repeat(width - 2) + '┐\n';
+    } else if (index === height - 1) {
+      str += '└' + '─'.repeat(width - 2) + '┘\n';
+    } else {
+      str += '│' + ' '.repeat(width - 2) + '│\n';
+    }
+  }
+  return str;
 }
 
 
@@ -246,13 +229,7 @@ export function getRectangleString(width, height) {
  *
  */
 export function encodeToRot13(str) {
-  /* implement your code here */
-  throw new Error('Not implemented');
-  // var strNew;
-  // for (var i = 0; i < str.length; i++) {
-  //   strNew += String.fromCharCode((str[i].charCodeAt() + 13) % 26);
-  // }
-  // return strNew;
+  return str.replace(/[a-z]/gi, c => String.fromCharCode((c = c.charCodeAt()) + ((c & 95) > 77 ? -13 : 13)));
 }
 
 /**
