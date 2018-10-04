@@ -151,7 +151,7 @@ export function doRectanglesOverlap(rect1, rect2) {
  *
  */
 export function isInsideCircle(circle, point) {
-  return circle.radius > Math.sqrt(Math.pow(point.x - circle.center.x, 2) + Math.pow(point.y - circle.center.y, 2));
+  return circle.radius > Math.hypot(point.x - circle.center.x, point.y - circle.center.y);
 }
 
 
@@ -256,8 +256,9 @@ export function reverseInteger(num) {
  *   4916123456789012 => false
  */
 export function isCreditCardNumber(ccn) {
-  /* implement your code here */
-  throw new Error('Not implemented');
+  var modified = [...ccn.toString()].reverse()
+    .map((x, index) => !(index % 2) ? x : (x * 2) > 9 ? x * 2 - 9 : x * 2);
+  return !(modified.reduce((result, x) => result += +x, 0) % 10);
 }
 
 
