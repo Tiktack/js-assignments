@@ -513,8 +513,9 @@ export function distinct(arr) {
  *   }
  */
 export function group(array, keySelector, valueSelector) {
-  throw new Error('Not implemented');
-  // return array.reduce((result, x, index) => result.set(keySelector(x)).set(valueSelector(x)), new Map());
+
+  return array.reduce((result, x) => !result.has(keySelector(x)) ? result.set(keySelector(x),
+    array.filter(y => keySelector(y) === keySelector(x)).map(valueSelector)) : result, new Map());
 }
 
 
